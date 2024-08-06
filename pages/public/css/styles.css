@@ -1,7 +1,0 @@
-.section-hover {
-    opacity: 75%;
-    transition: opacity 0.3s ease-in-out 0s;
-}
-.section-hover:hover {
-    opacity: 100%;
-}
