@@ -14,7 +14,7 @@ $pills = [
         }
     ?>
         <li class="nav-item">
-            <a href="<?php echo $pill["href"] ?>" class="btn btn-outline-primary border-0 rounded-3 fs-5 btn-aside <?php echo $active ?>">
+            <a href="<?php echo $pill["href"] ?>" class="btn btn-outline-success border-0 rounded-3 fs-5 btn-aside <?php echo $active ?>">
                 <i class="bi bi-<?php echo $pill["icon"] ?>"></i>
                 <?php echo $pill["text"] ?>
             </a>

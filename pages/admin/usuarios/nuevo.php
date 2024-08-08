@@ -70,7 +70,7 @@ define("PILL_SELECT", "Nuevo");
                                     </div>
                                     <input type="password" id="confirmPass" oninput="toggleConfirmPass()" class="form-control form-control-lg" placeholder="Confirmar contraseña" minlength="8" required>
                                     <p id="txtErr" class="text-danger fw-semibold ms-1 pb-2"></p>
-                                    <button class="btn btn-lg btn-primary w-100" type="submit">
+                                    <button class="btn btn-lg btn-success w-100" type="submit">
                                         Crear
                                     </button>
                                 </form>
