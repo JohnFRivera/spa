@@ -1,7 +1,7 @@
 <?php
 
 $links = [
-    ["text" => "Dashboard", "href" => "../dashboard.php"]
+    ["text" => "Agenda", "href" => "../dashboard.php"]
 ]
 
 ?>

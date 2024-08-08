@@ -1,0 +1,11 @@
+.h-section {
+  min-height: 80vh;
+}
+
+.btn-aside {
+  color: #000000;
+  transition: all 0.3s ease-in-out;
+}
+.btn-aside:hover {
+  color: #ffffff;
+}

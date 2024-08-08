@@ -121,8 +121,6 @@ $users = [
     </main>
     <?php include("../../../assets/templates/footer.php"); ?>
     <script src="../../../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/vfs_fonts.js"></script>
-    <script src="../../assets/js/pdfmake.min.js"></script>
     <script src="../../assets/js/datatables.min.js"></script>
     <script>
         let table = new DataTable('#myTable', {

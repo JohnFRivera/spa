@@ -1,14 +1,7 @@
 <?php
 
 $buttons = [
-    ["text" => "Gráficos", "href" => "../graficos/", "icon" => "graph-up"],
-    ["text" => "Reportes", "href" => "../reportes/ingresos_generados.php", "icon" => "file-spreadsheet"],
-    ["text" => "Usuarios", "href" => "../usuarios/", "icon" => "person-circle"],
-    ["text" => "Clientes", "href" => "../clientes/", "icon" => "people"],
-    ["text" => "Empleados", "href" => "../empleados/", "icon" => "person-vcard"],
-    ["text" => "Servicios", "href" => "../servicios/", "icon" => "people"],
-    ["text" => "Sesiones", "href" => "../sesiones/", "icon" => "people"],
-    ["text" => "Productos", "href" => "../productos/", "icon" => "box-seam"],
+    ["text" => "Agendar cita", "href" => "../citas/", "icon" => "calendar-plus"],
 ];
 
 ?>
