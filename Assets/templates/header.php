@@ -41,7 +41,7 @@ $links = [
                         if (PAGE_NAME == "Ingresar") {
                         ?>
                             <a href="./ingresar.php" class="btn btn-lg btn-success"><i class="bi bi-box-arrow-in-right me-1"></i> Ingresar</a>
-                            <a href=./registrarse.php" class="btn btn-lg btn-outline-success">Registrarse</a>
+                            <a href="./registrarse.php" class="btn btn-lg btn-outline-success">Registrarse</a>
                         <?php
                         } else {
                         ?>

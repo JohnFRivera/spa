@@ -75,6 +75,7 @@ define("PAGE_NAME", "Ingresar");
     </main>
     <!-- PIE -->
     <?php include("./assets/templates/footer.php"); ?>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
     <script>
         const toggleShowPass = () => {
             var inpPass = document.getElementById("password");
