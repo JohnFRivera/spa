@@ -2,13 +2,13 @@
 
 $buttons = [
     ["text" => "Gráficos", "href" => "../graficos/", "icon" => "graph-up"],
-    ["text" => "Reportes", "href" => "../reportes/", "icon" => "file-spreadsheet-fill"],
+    ["text" => "Reportes", "href" => "../reportes/", "icon" => "file-spreadsheet"],
     ["text" => "Usuarios", "href" => "../usuarios/", "icon" => "person-circle"],
-    ["text" => "Clientes", "href" => "../clientes/", "icon" => "people-fill"],
-    ["text" => "Empleados", "href" => "../empleados/", "icon" => "person-vcard-fill"],
-    ["text" => "Servicios", "href" => "../servicios/", "icon" => "people-fill"],
-    ["text" => "Sesiones", "href" => "../sesiones/", "icon" => "people-fill"],
-    ["text" => "Productos", "href" => "../productos/", "icon" => "box-seam-fill"],
+    ["text" => "Clientes", "href" => "../clientes/", "icon" => "people"],
+    ["text" => "Empleados", "href" => "../empleados/", "icon" => "person-vcard"],
+    ["text" => "Servicios", "href" => "../servicios/", "icon" => "people"],
+    ["text" => "Sesiones", "href" => "../sesiones/", "icon" => "people"],
+    ["text" => "Productos", "href" => "../productos/", "icon" => "box-seam"],
 ];
 
 ?>
@@ -25,9 +25,9 @@ $buttons = [
             }
         ?>
             <li class="nav-item">
-                <?php echo "<a href='".$button["href"]."' class='btn btn-outline-success btn-aside border-0 fs-5 d-flex flex-column flex-md-row justify-content-start w-100 ps-3 pe-5 me-2 $active'>" ?>
-                <?php echo "<i class='bi bi-".$button["icon"]." me-0 me-md-3'></i>" ?>
-                <?php echo $button["text"] ?>
+                <a href="<?php echo $button["href"] ?>" class="btn btn-outline-success btn-aside border-0 fs-5 d-flex flex-column flex-md-row justify-content-start w-100 ps-4 pe-5 me-2 <?php echo $active ?>">
+                    <i class="bi bi-<?php echo $button["icon"] ?> me-0 me-md-2"></i>
+                    <?php echo $button["text"] ?>
                 </a>
             </li>
         <?php

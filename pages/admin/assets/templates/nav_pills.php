@@ -9,13 +9,13 @@ $pills = [
     <?php
     foreach ($pills as $key => $pill) {
         $active = "";
-        if($pill["text"] == PILL_SELECT) {
+        if ($pill["text"] == PILL_SELECT) {
             $active = "active";
         }
     ?>
         <li class="nav-item">
-            <?php echo "<a href='".$pill["href"]."' class='btn btn-outline-primary border-0 rounded-3 btn-aside $active'>" ?>
-                <?php echo "<i class='bi bi-".$pill["icon"]."'></i>" ?>
+            <a href="<?php echo $pill["href"] ?>" class="btn btn-outline-primary border-0 rounded-3 fs-5 btn-aside <?php echo $active ?>">
+                <i class="bi bi-<?php echo $pill["icon"] ?>"></i>
                 <?php echo $pill["text"] ?>
             </a>
         </li>
