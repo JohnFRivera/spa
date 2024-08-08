@@ -123,10 +123,10 @@ $users = [
         let table = new DataTable('#myTable', {
             language: {
                 "emptyTable": "No hay datos disponibles en la tabla",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ usuarios",
-                "infoEmpty": "Mostrando 0 a 0 de 0 usuarios",
-                "infoFiltered": "(filtrado de _MAX_ usuarios totales)",
-                "lengthMenu": "Mostrar _MENU_ usuarios",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ servicios",
+                "infoEmpty": "Mostrando 0 a 0 de 0 servicios",
+                "infoFiltered": "(filtrado de _MAX_ servicios totales)",
+                "lengthMenu": "Mostrar _MENU_ servicios",
                 "loadingRecords": "Cargando...",
                 "search": "Buscar: ",
                 "zeroRecords": "No se encontraron registros coincidentes",

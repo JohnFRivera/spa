@@ -79,7 +79,7 @@ $users = [
                                     <div class="modal-dialog">
                                         <form id="frmPut" action="/spa/back/" method="post" class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title text-primary fs-4" id="putModalLabel">Modificar Usuario</h1>
+                                                <h1 class="modal-title text-primary fs-4" id="putModalLabel">Modificar Cliente</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
