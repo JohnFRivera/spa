@@ -29,13 +29,13 @@ define("PILL_SELECT", "Nuevo");
                         <div class="bg-light rounded-4 shadow-sm p-3">
                             <?php include("../assets/templates/nav_pills.php") ?>
                             <div class="row mt-3">
-                                <form action="" method="post" class="col-12 col-md-9 col-lg-5">
+                            <form action="../../../Back/Controllers/spaEmpelados/usuarios/controlador_insertar_usuario.php" method="post" class="col-12 col-md-9 col-lg-5">
                                     <div class="row g-2 mb-2">
                                         <div class="col">
-                                            <input type="text" name="nombres" class="form-control form-control-lg" placeholder="Nombres" required>
+                                            <input type="text" name="nombre" class="form-control form-control-lg" placeholder="Nombre" required>
                                         </div>
                                         <div class="col">
-                                            <input type="text" name="apellidos" class="form-control form-control-lg" placeholder="Apellidos" required>
+                                            <input type="text" name="apellido" class="form-control form-control-lg" placeholder="Apellido" required>
                                         </div>
                                     </div>
                                     <div class="row g-2 mb-2">
@@ -48,11 +48,11 @@ define("PILL_SELECT", "Nuevo");
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <select name="rol" class="form-select form-select-lg" required>
+                                            <select name="id_Rol" class="form-select form-select-lg" required>
                                                 <option>Rol...</option>
-                                                <option value="Usuario">Usuario</option>
-                                                <option value="Empleado">Empleado</option>
-                                                <option value="Administrador">Administrador</option>
+                                                <option value="1">Usuario</option>
+                                                <option value="2">Empleado</option>
+                                                <option value="3">Administrador</option>
                                             </select>
                                         </div>
                                     </div>
@@ -60,7 +60,7 @@ define("PILL_SELECT", "Nuevo");
                                         <div class="input-group-text">
                                             <i class="bi bi-envelope-at fs-5"></i>
                                         </div>
-                                        <input type="email" name="email" class="form-control form-control-lg" placeholder="Correo electrónico" required>
+                                        <input type="email" name="correo" class="form-control form-control-lg" placeholder="Correo electrónico" required>
                                     </div>
                                     <div class="input-group mb-2">
                                         <div class="input-group-text">

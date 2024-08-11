@@ -1,12 +1,12 @@
 <?php
-include('../../Model/conexion.php');
+include('../../../Back/Model/conexion.php');
 
 $conexion = new Conexion();
 
 try {
     $consulta = "select id, nombre, apellido, direccion, correo from clientes;";
     $clientes = $conexion->ConsultaCompleja($consulta);
-    echo json_encode($clientes);
+    return $clientes;
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

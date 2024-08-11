@@ -23,7 +23,7 @@ try {
     $resultado = $stmt->execute();
 
     if ($resultado) {
-        echo $nombre." ".$apellido." editado Exitosamente";
+        header('Location: http://localhost/spa/pages/admin/clientes/');
     } else {
         echo "Error en la consulta";
     }

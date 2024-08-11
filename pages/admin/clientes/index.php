@@ -2,13 +2,7 @@
 define("PAGE_NAME", "Clientes");
 define("PILL_SELECT", "Lista");
 
-$users = [
-    ["id" => "1", "nombre" => "John", "apellido" => "Rivera", "direccion" => "cra.23", "correo" => "john@gmail.com"],
-    ["id" => "2", "nombre" => "Kevin", "apellido" => "Alzate", "direccion" => "cra.3123", "correo" => "kevin@gmail.com"],
-    ["id" => "3", "nombre" => "Walter", "apellido" => "Arias", "direccion" => "calle213", "correo" => "walter@gmail.com"],
-    ["id" => "4", "nombre" => "Camilo", "apellido" => "Vanegas", "direccion" => "cra.23213", "correo" => "camilo@gmail.com"],
-    ["id" => "5", "nombre" => "Bladimir", "apellido" => "Silva", "direccion" => "calle12323", "correo" => "blacho@gmail.com"],
-];
+$users = require_once '../../../Back/Controllers/clientes/controlador_Select_cliente.php' ;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -77,7 +71,7 @@ $users = [
                                 </table>
                                 <div class="modal fade" id="putModal" tabindex="-1" aria-labelledby="putModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form id="frmPut" action="/spa/back/" method="post" class="modal-content">
+                                        <form id="frmPut" action="../../../Back/Controllers/spaEmpelados/usuarios/controlador_edit_usuario.php" method="post" class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title text-primary fs-4" id="putModalLabel">Modificar Cliente</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

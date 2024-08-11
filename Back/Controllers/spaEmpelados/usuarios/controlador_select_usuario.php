@@ -1,12 +1,18 @@
 <?php
-include('../../../Model/conexion.php');
+require_once('../../../Back/Model/conexion.php');
 
-$conexion = new Conexion();
 
 try {
-    $consulta = 'SELECT usuarios.id, nombre, apellido, correo, roles.descripcion FROM usuarios INNER JOIN roles ON usuarios.id_Rol = roles.id;';
+    $conexion = new Conexion();
+    $conexion->conectar();
+
+    $consulta = 'SELECT usuarios.id, nombre, apellido,telefono, correo, roles.descripcion FROM usuarios INNER JOIN roles ON usuarios.id_Rol = roles.id;';
     $usuario = $conexion->ConsultaCompleja($consulta);
-    echo json_encode($usuario);
+
+    return $usuario;
+
+    $conexion->Desconectar();
+
 } catch (PDOException $e) {
     echo 'error: ' . $e->getMessage();
 }
