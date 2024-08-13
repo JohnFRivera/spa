@@ -2,13 +2,7 @@
 define("PAGE_NAME", "Empleados");
 define("PILL_SELECT", "Lista");
 
-$users = [
-    ["id" => "1", "nombre" => "John", "apellido" => "Rivera", "especialidad" => "Manicurista"],
-    ["id" => "2", "nombre" => "Kevin", "apellido" => "Alzate", "especialidad" => "Masajeante"],
-    ["id" => "3", "nombre" => "Walter", "apellido" => "Arias", "especialidad" => "Vapor"],
-    ["id" => "4", "nombre" => "Camilo", "apellido" => "Vanegas", "especialidad" => "Spa"],
-    ["id" => "5", "nombre" => "Bladimir", "apellido" => "Silva", "especialidad" => "Doblador"],
-];
+$users = require_once '../../../Back/Controllers/spaEmpelados/terapeutas/controlador_select_terapeuta.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -72,7 +66,7 @@ $users = [
                                 </table>
                                 <div class="modal fade" id="putModal" tabindex="-1" aria-labelledby="putModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form id="frmPut" action="/spa/back/" method="post" class="modal-content">
+                                        <form id="frmPut" action="/spa/back/Controllers/spaEmpelados/terapeutas/controlador_edit_terapeuta.php" method="post" class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title text-primary fs-4" id="putModalLabel">Modificar Empleado</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -80,10 +74,10 @@ $users = [
                                             <div class="modal-body">
                                                 <div class="row g-2 mb-2">
                                                     <div class="col">
-                                                        <input type="text" name="nombres" id="inpNombres" class="form-control form-control-lg" placeholder="Nombres" required>
+                                                        <input type="text" name="nombre" id="inpNombres" class="form-control form-control-lg" placeholder="Nombres" required>
                                                     </div>
                                                     <div class="col">
-                                                        <input type="text" name="apellidos" id="inpApellidos" class="form-control form-control-lg" placeholder="Apellidos" required>
+                                                        <input type="text" name="apellido" id="inpApellidos" class="form-control form-control-lg" placeholder="Apellidos" required>
                                                     </div>
                                                 </div>
                                                 <input type="text" name="especialidad" id="inpEspecialidad" class="form-control form-control-lg" placeholder="Especialidad" required>
@@ -97,7 +91,7 @@ $users = [
                                 </div>
                                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form id="frmDelete" action="/spa/back/" method="post" class="modal-content">
+                                        <form id="frmDelete" action="/spa/back/Controllers/spaEmpelados/terapeutas/controlador_delete_terapeuta.php" method="post" class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title text-danger fs-4" id="deleteModalLabel">¡Advertencia!</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -151,7 +145,7 @@ $users = [
         };
         const showPutModal = (id) => {
             var cols = getCols(id);
-            document.getElementById("frmPut").action += id;
+            document.getElementById("frmPut").action += `?id=${id}`;
             document.getElementById("inpNombres").value = cols[0];
             document.getElementById("inpApellidos").value = cols[1];
             document.getElementById("inpEspecialidad").value = cols[2];
@@ -159,7 +153,7 @@ $users = [
         };
         const showDeleteModal = (id) => {
             var cols = getCols(id);
-            document.getElementById("frmDelete").action += id;
+            document.getElementById("frmDelete").action += `?id=${id}`;
             document.getElementById("lblUsuario").innerText = `${cols[0]} ${cols[1]}`;
             deleteModal.show();
         };

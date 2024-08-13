@@ -1,6 +1,8 @@
 <?php
 define("PAGE_NAME", "Servicios");
 define("PILL_SELECT", "Nuevo");
+
+$terapeutas = require_once('../../../Back/Controllers/spaEmpelados/terapeutas/controlador_select_terapeuta.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,7 +31,7 @@ define("PILL_SELECT", "Nuevo");
                         <div class="bg-light rounded-4 shadow-sm p-3">
                             <?php include("../assets/templates/nav_pills.php") ?>
                             <div class="row mt-3">
-                                <form action="" method="post" class="col-12 col-md-9 col-lg-5">
+                                <form action="/spa/Back/Controllers/servicios/insert_servicio.php" method="post" class="col-12 col-md-9 col-lg-5">
                                     <input type="text" name="descripcion" class="form-control form-control-lg mb-2" placeholder="Descripción" required>
                                     <div class="input-group rounded-3 mb-2">
                                         <div class="input-group-text">
@@ -44,8 +46,14 @@ define("PILL_SELECT", "Nuevo");
                                         <input type="text" name="precio" class="form-control form-control-lg" placeholder="Precio" pattern="^[0-9]*$" min="0" required>
                                     </div>
                                     <select name="terapeuta" class="form-select form-select-lg mb-3">
-                                        <option>Terapeuta...</option>
+                                        <option value="">Terapeuta...</option>
+                                        <?php foreach ($terapeutas as $terapeuta): ?>
+                                            <option value="<?php echo htmlspecialchars($terapeuta['id']); ?>">
+                                                <?php echo htmlspecialchars($terapeuta['nombre']); ?>
+                                            </option>
+                                        <?php endforeach; ?>
                                     </select>
+
                                     <button class="btn btn-lg btn-success w-100" type="submit">
                                         Crear
                                     </button>

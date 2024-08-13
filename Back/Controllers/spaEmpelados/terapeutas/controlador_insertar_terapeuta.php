@@ -1,6 +1,6 @@
 <?php
 
-include('../../../Model/conexion.php');
+require_once('../../../Back/Model/conexion.php');
 
 
 $nombre = $_POST['nombre'];
@@ -18,7 +18,7 @@ try {
     $stmt->bindParam(':especialidad', $especialidad, PDO::PARAM_STR);
     $resultado = $stmt->execute();
     if ($resultado) {
-        echo "Consulta ejecutada correctamente";
+        header('Location: http://localhost/spa/pages/admin/empleados/');
     } else {
         echo "Error en la consulta";
     }

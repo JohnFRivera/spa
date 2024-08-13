@@ -26,7 +26,7 @@ define("PAGE_NAME", "Registrarse");
                     <div class="col-11 col-lg-9 col-xl-8 col-xxl-7 my-5 mx-auto">
                         <h1 class="fw-bold text-center mb-0">!Descubre el Akzara!</h1>
                         <p class="fw-normal text-center fs-5 mb-5"><strong>Regístrate</strong> ahora y sumérgete en la experiencia rejuvenecedora de nuestro <strong class="text-success">Spa</strong></p>
-                        <form action="" method="post">
+                        <form action="/spa/Back/Controllers/auth/register/controlador_registro.php" method="post">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong><i class="bi bi-exclamation-circle-fill me-1"></i> Error:</strong> La contraseña está incorrecta.
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -34,10 +34,10 @@ define("PAGE_NAME", "Registrarse");
                             <h5 class="fw-bold ms-1 mb-1">Datos básicos</h5>
                             <div class="row g-2 mb-2">
                                 <div class="col">
-                                    <input type="text" name="nombres" id="nombres" class="form-control form-control-lg" placeholder="Nombres" required>
+                                    <input type="text" name="nombre" id="nombres" class="form-control form-control-lg" placeholder="Nombres" required>
                                 </div>
                                 <div class="col">
-                                    <input type="text" name="apellidos" id="apellidos" class="form-control form-control-lg" placeholder="Apellidos" required>
+                                    <input type="text" name="apellido" id="apellidos" class="form-control form-control-lg" placeholder="Apellidos" required>
                                 </div>
                             </div>
                             <div class="input-group mb-2">
@@ -51,7 +51,7 @@ define("PAGE_NAME", "Registrarse");
                                 <div class="input-group-text fs-5">
                                     <i class="bi bi-envelope-at"></i>
                                 </div>
-                                <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="Correo electrónico" required>
+                                <input type="email" name="correo" id="email" class="form-control form-control-lg" placeholder="Correo electrónico" required>
                             </div>
                             <div class="input-group mb-2">
                                 <div class="input-group-text">

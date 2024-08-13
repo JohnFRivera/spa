@@ -1,4 +1,5 @@
 <?php
+
 class Conexion {
     private $host = "localhost";
     private $dbname = "bd_spa";

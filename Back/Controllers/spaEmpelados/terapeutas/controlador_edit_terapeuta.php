@@ -2,7 +2,7 @@
 
 include('../../../Model/conexion.php');
 
-$id = $_POST['id'];
+$id = $_GET['id'];
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
 $especialidad = $_POST['especialidad'];
@@ -19,7 +19,7 @@ try {
     $stmt->bindParam(':id',$id, PDO::PARAM_STR);
     $resultado = $stmt->execute();
     if ($resultado) {
-        echo "Consulta ejecutada correctamente";
+        header('Location: http://localhost/spa/pages/admin/empleados/');
     } else {
         echo "Error en la consulta";
     }

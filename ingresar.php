@@ -1,5 +1,7 @@
 <?php
 define("PAGE_NAME", "Ingresar");
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,7 +34,7 @@ define("PAGE_NAME", "Ingresar");
                             Bienvenido
                         </h1>
                         <p class="fw-normal text-center fs-5 mb-5"><strong>Inicia sesión</strong> y disfruta de todas las experiencias que nuestro <strong class="text-success">Spa</strong> tiene para ofrecerte</p>
-                        <form action="" method="post">
+                        <form action="/spa/Back/Controllers/auth/login/controlador_login.php" method="post">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong><i class="bi bi-exclamation-circle-fill me-1"></i> Error:</strong> La contraseña está incorrecta.
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -42,7 +44,7 @@ define("PAGE_NAME", "Ingresar");
                                     <i class="bi bi-envelope-at fs-5"></i>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Correo electrónico" required>
+                                    <input type="email" name="correo" id="email" class="form-control" placeholder="Correo electrónico" required>
                                     <label for="email">Correo electrónico</label>
                                 </div>
                             </div>

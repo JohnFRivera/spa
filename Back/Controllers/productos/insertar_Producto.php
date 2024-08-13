@@ -1,8 +1,8 @@
 <?php
-    include('../../Model/conexion.php');
+    require_once '../../../Back/Model/conexion.php';
     $descripcion = $_POST['descripcion'];
-    $stock = $_POST['stock'];
-    $valor = $_POST['valor'];
+    $stock = $_POST['existencias'];
+    $valor = $_POST['precio'];
 
 
     $conexion = new Conexion();
@@ -18,11 +18,7 @@
 
         if ($stmt -> rowCount() > 0)
         {
-            $mensaje = array(
-                "message" => "Producto Agregado"
-            );
-            $enviar_Mensaje = json_encode($mensaje);
-            print $enviar_Mensaje;
+            header('Location: http://localhost/spa/pages/admin/productos/');
         }
         else{
             $mensaje = array(

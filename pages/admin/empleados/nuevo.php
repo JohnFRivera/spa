@@ -29,13 +29,13 @@ define("PILL_SELECT", "Nuevo");
                         <div class="bg-light rounded-4 shadow-sm p-3">
                             <?php include("../assets/templates/nav_pills.php") ?>
                             <div class="row mt-3">
-                                <form action="" method="post" class="col-12 col-md-9 col-lg-5">
+                                <form action="/spa/back/Controllers/spaEmpelados/terapeutas/controlador_insertar_terapeuta.php" method="post" class="col-12 col-md-9 col-lg-5">
                                     <div class="row g-2 mb-2">
                                         <div class="col">
-                                            <input type="text" name="nombres" class="form-control form-control-lg" placeholder="Nombres" required>
+                                            <input type="text" name="nombre" class="form-control form-control-lg" placeholder="Nombres" required>
                                         </div>
                                         <div class="col">
-                                            <input type="text" name="apellidos" class="form-control form-control-lg" placeholder="Apellidos" required>
+                                            <input type="text" name="apellido" class="form-control form-control-lg" placeholder="Apellidos" required>
                                         </div>
                                     </div>
                                     <input type="text" name="especialidad" class="form-control form-control-lg mb-3" placeholder="Especialidad" required>

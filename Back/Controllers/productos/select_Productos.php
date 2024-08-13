@@ -1,12 +1,22 @@
 <?php
-include('../../Model/conexion.php');
+require_once '../../../Back/Model/conexion.php';
 
 $conexion = new Conexion();
+$conexion ->conectar();
 
-try {
+try{
     $consulta = "SELECT id, descripcion FROM productos;";
-    $clientes = $conexion->ConsultaCompleja($consulta);
-    echo json_encode($clientes);
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
+    $stmt = $conexion -> ConsultaCompleja($consulta);
+    $resultado = $stmt ;
+    $data = array();
+    foreach ($resultado as $row)
+    {
+        $data[] = $row;
+    }
+    return $data;
+}catch(PDOException $e)
+{
+    echo 'error: ' . $e->getMessage();
+}finally{
+    $conexion -> Desconectar();
 }

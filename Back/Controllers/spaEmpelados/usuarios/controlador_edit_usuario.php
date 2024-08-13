@@ -1,10 +1,9 @@
-<?php
+<?php 
+include('../../../Model/conexion.php');
 
-include('../../../Back/Model/conexion.php');
-
-// Verificar si los datos están presentes en la solicitud POST
 if (isset($_POST['id'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['id_Rol'], $_POST['telefono'])) {
-    $id = $_POST['id'];
+
+    $id = $_GET['id'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $correo = $_POST['correo'];
@@ -23,14 +22,15 @@ if (isset($_POST['id'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], 
         $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
         $stmt->bindParam(':id_Rol', $id_Rol, PDO::PARAM_INT);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        
         $resultado = $stmt->execute();
 
         if ($resultado) {
-            // Redirigir al índice después de una actualización exitosa
-            header('Location: http://localhost/spa/pages/admin/usuarios/'); // Cambia la ruta al archivo de índice
+             header('Location: http://localhost/spa/pages/admin/usuarios/');
             exit();
         } else {
-            echo "Error en la consulta";
+            $errorInfo = $stmt->errorInfo();
+            echo "Error en la consulta: " . $errorInfo[2];
         }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
@@ -40,4 +40,3 @@ if (isset($_POST['id'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], 
 } else {
     echo "Faltan datos en la solicitud.";
 }
-?>

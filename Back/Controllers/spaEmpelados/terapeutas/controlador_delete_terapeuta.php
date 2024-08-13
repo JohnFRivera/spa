@@ -8,13 +8,13 @@ $conexion = new conexion();
 $conexion->conectar();
 
 try {
-    $consulta = "DELETE FROM usuarios WHERE id = :id";
+    $consulta = "DELETE FROM terapeutas WHERE id = :id";
     $stmt = $conexion->prepare($consulta);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $resultado = $stmt->execute();
 
     if ($resultado) {
-        header('Location: http://localhost/spa/pages/admin/usuarios/');
+        header('Location: http://localhost/spa/pages/admin/empleados/');
     } else {
         echo "Error al eliminar el registro";
     }

@@ -71,7 +71,7 @@ $users = require_once '../../../Back/Controllers/clientes/controlador_Select_cli
                                 </table>
                                 <div class="modal fade" id="putModal" tabindex="-1" aria-labelledby="putModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form id="frmPut" action="../../../Back/Controllers/spaEmpelados/usuarios/controlador_edit_usuario.php" method="post" class="modal-content">
+                                        <form id="frmPut" action="/spa/Back/Controllers/clientes/controlador_editar_cliente.php" method="post" class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title text-primary fs-4" id="putModalLabel">Modificar Cliente</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -79,10 +79,10 @@ $users = require_once '../../../Back/Controllers/clientes/controlador_Select_cli
                                             <div class="modal-body">
                                                 <div class="row g-2 mb-2">
                                                     <div class="col">
-                                                        <input type="text" name="nombres" id="inpNombres" class="form-control form-control-lg" placeholder="Nombres" required>
+                                                        <input type="text" name="nombre" id="inpNombres" class="form-control form-control-lg" placeholder="Nombres" required>
                                                     </div>
                                                     <div class="col">
-                                                        <input type="text" name="apellidos" id="inpApellidos" class="form-control form-control-lg" placeholder="Apellidos" required>
+                                                        <input type="text" name="apellido" id="inpApellidos" class="form-control form-control-lg" placeholder="Apellidos" required>
                                                     </div>
                                                 </div>
                                                 <div class="input-group mb-2">
@@ -95,7 +95,7 @@ $users = require_once '../../../Back/Controllers/clientes/controlador_Select_cli
                                                     <div class="input-group-text">
                                                         <i class="bi bi-envelope-at fs-5"></i>
                                                     </div>
-                                                    <input type="email" name="email" id="inpEmail" class="form-control form-control-lg" placeholder="Correo electrónico" required>
+                                                    <input type="email" name="correo" id="inpEmail" class="form-control form-control-lg" placeholder="Correo electrónico" required>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -143,7 +143,7 @@ $users = require_once '../../../Back/Controllers/clientes/controlador_Select_cli
         };
         const showPutModal = (id) => {
             var cols = getCols(id);
-            document.getElementById("frmPut").action += id;
+            document.getElementById("frmPut").action += `?id=${id}`;
             document.getElementById("inpNombres").value = cols[0];
             document.getElementById("inpApellidos").value = cols[1];
             document.getElementById("inpDireccion").value = cols[2];

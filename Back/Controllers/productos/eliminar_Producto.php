@@ -1,7 +1,7 @@
 <?php
-    include('../../Model/conexion.php');
+    require_once '../../../Back/Model/conexion.php';
 
-    $id = $_POST['id'];
+    $id = $_GET['id'];
     $conexion = new Conexion();
     $conexion -> conectar();
     $enviar_Mensaje;
@@ -14,13 +14,7 @@
 
         if ($stmt -> rowCount() > 0)
         {
-            $mensaje = array (
-
-                "message" => "Producto Eliminado"
- 
-            );
-            $enviar_Mensaje =  json_encode($mensaje);
-            print $enviar_Mensaje;
+            header('Location: http://localhost/spa/pages/admin/productos/');
         } 
         else {
             $mensaje = array (

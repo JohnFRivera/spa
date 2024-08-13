@@ -1,7 +1,7 @@
 <?php
 include('../../Model/conexion.php');
 
-$id = $_POST['id'];
+$id = $_GET['id'];
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
 $direccion = $_POST['direccion'];

@@ -2,6 +2,12 @@
 define("PAGE_NAME", "Usuarios");
 define("PILL_SELECT", "Lista");
 
+session_start();
+if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
+    header('Location: ../../../index.php');
+    exit();
+}
+
 $users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlador_select_usuario.php';
 ?>
 <!DOCTYPE html>
@@ -79,7 +85,7 @@ $users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlad
                                 </table>
                                 <div class="modal fade" id="putModal" tabindex="-1" aria-labelledby="putModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                    <form id="frmPut" action="../../../Back/Controllers/spaEmpelados/usuarios/controlador_edit_usuario.php" method="post" class="modal-content">
+                                    <form id="frmPut" action="/spa/Back/Controllers/spaEmpelados/usuarios/controlador_edit_usuario.php" method="post" class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title text-primary fs-4" id="putModalLabel">Modificar Usuario</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -131,7 +137,7 @@ $users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlad
                                 </div>
                                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form id="frmDelete" action="/spa/back/" method="post" class="modal-content">
+                                        <form id="frmDelete" action="/spa/back/Controllers/spaEmpelados/usuarios/controlador_eliminar_usuario.php" method="post" class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title text-danger fs-4" id="deleteModalLabel">¡Advertencia!</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -193,7 +199,7 @@ $users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlad
         };
         const showPutModal = (id) => {
             var cols = getCols(id);
-            document.getElementById("frmPut").action += id;
+            document.getElementById("frmPut").action += `?id=${id}`;
             document.getElementById("inpNombres").value = cols[0];
             document.getElementById("inpApellidos").value = cols[1];
             document.getElementById("inpTelefono").value = cols[2];
@@ -203,7 +209,7 @@ $users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlad
         };
         const showDeleteModal = (id) => {
             var cols = getCols(id);
-            document.getElementById("frmDelete").action += id;
+            document.getElementById("frmDelete").action += `?id=${id}`;
             document.getElementById("lblUsuario").innerText = `${cols[0]} ${cols[1]}`;
             deleteModal.show();
         };

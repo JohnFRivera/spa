@@ -1,10 +1,10 @@
 <?php
-    include('../../Model/conexion.php');
+    require_once '../../../Back/Model/conexion.php';
 
-    $descripcion = $_POST['descripcion_Servicio'];
-    $valor = $_POST['valor_Servicio'];
+    $descripcion = $_POST['descripcion'];
+    $valor = $_POST['precio'];
     $duracion = $_POST['duracion'];
-    $id = $_POST['id_Terapeuta'];
+    $id = $_POST['terapeuta'];
     $conexion  = new Conexion();
 
     $conexion -> conectar();
@@ -19,11 +19,7 @@
         $stmt -> execute();
         if ($stmt -> rowCount() > 0)
         {
-            $mensaje = array(
-                "message" => "Servicio Agregado"
-            );
-            $enviar_Mensaje = json_encode($mensaje);
-            print $enviar_Mensaje;
+            header('Location: http://localhost/spa/pages/admin/servicios/');
         }
         else
         {

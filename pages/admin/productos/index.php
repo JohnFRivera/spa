@@ -2,13 +2,8 @@
 define("PAGE_NAME", "Productos");
 define("PILL_SELECT", "Lista");
 
-$users = [
-    ["id" => "1", "descripcion" => "Toalla", "existencias" => "11", "precio" => "3105339788", "estado" => "0"],
-    ["id" => "2", "descripcion" => "Tomate", "existencias" => "45", "precio" => "3105339788", "estado" => "1"],
-    ["id" => "3", "descripcion" => "Piedra", "existencias" => "23", "precio" => "3105339788", "estado" => "1"],
-    ["id" => "4", "descripcion" => "Relax", "existencias" => "12", "precio" => "3105339788", "estado" => "1"],
-    ["id" => "5", "descripcion" => "Crema", "existencias" => "36", "precio" => "3105339788", "estado" => "1"],
-];
+$users = require_once '../../../Back/Controllers/productos/seleccionar_Productos.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -53,9 +48,13 @@ $users = [
                                         ?>
                                             <tr id="row-<?php echo $user["id"] ?>">
                                                 <td><?php echo $user["descripcion"] ?></td>
-                                                <td><?php echo $user["existencias"] ?></td>
-                                                <td><?php echo $user["precio"] ?></td>
-                                                <td><?php echo $user["estado"] ?></td>
+                                                <td><?php echo $user["stock"] ?></td>
+                                                <td><?php echo $user["valor_Producto"] ?></td>
+                                                <td><?php if ($user["estado"] === 0) {
+                                                    echo 'Inactivo';
+                                                }else{
+                                                    echo 'Activo';
+                                                } ?></td>
                                                 <td>
                                                     <div class="d-flex justify-content-end gap-2">
                                                         <button type="button" onclick="showPutModal(<?php echo $user['id'] ?>)" class="bg-transparent border-0 text-primary p-0">
@@ -74,7 +73,7 @@ $users = [
                                 </table>
                                 <div class="modal fade" id="putModal" tabindex="-1" aria-labelledby="putModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form id="frmPut" action="/spa/back/" method="post" class="modal-content">
+                                        <form id="frmPut" action="/spa/back/Controllers/productos/editar_producto.php" method="post" class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title text-primary fs-4" id="putModalLabel">Modificar Producto</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -103,7 +102,7 @@ $users = [
                                 </div>
                                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form id="frmDelete" action="/spa/back/" method="post" class="modal-content">
+                                        <form id="frmDelete" action="/spa/back/Controllers/productos/eliminar_producto.php" method="post" class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title text-danger fs-4" id="deleteModalLabel">¡Advertencia!</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -165,7 +164,7 @@ $users = [
         };
         const showPutModal = (id) => {
             var cols = getCols(id);
-            document.getElementById("frmPut").action += id;
+            document.getElementById("frmPut").action += `?id=${id}`;
             document.getElementById("inpDescripcion").value = cols[0];
             document.getElementById("inpExistencias").value = cols[1];
             document.getElementById("inpPrecio").value = cols[2];
@@ -174,7 +173,7 @@ $users = [
         };
         const showDeleteModal = (id) => {
             var cols = getCols(id);
-            document.getElementById("frmDelete").action += id;
+            document.getElementById("frmDelete").action += `?id=${id}`;
             document.getElementById("lblUsuario").innerText = `${cols[0]}`;
             deleteModal.show();
         };

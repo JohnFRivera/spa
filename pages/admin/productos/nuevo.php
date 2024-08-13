@@ -29,7 +29,7 @@ define("PILL_SELECT", "Nuevo");
                         <div class="bg-light rounded-4 shadow-sm p-3">
                             <?php include("../assets/templates/nav_pills.php") ?>
                             <div class="row mt-3">
-                                <form action="" method="post" class="col-12 col-md-9 col-lg-5">
+                                <form action="/spa/Back/Controllers/productos/insertar_producto.php" method="post" class="col-12 col-md-9 col-lg-5">
                                     <input type="text" name="descripcion" class="form-control form-control-lg mb-2" placeholder="Descripción" required>
                                     <input type="number" name="existencias" class="form-control form-control-lg mb-2" placeholder="Existencias" pattern="^[0-9]*$" min="1" required>
                                     <div class="input-group mb-2">

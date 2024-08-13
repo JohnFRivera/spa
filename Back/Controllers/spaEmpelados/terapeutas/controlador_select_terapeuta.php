@@ -1,5 +1,5 @@
 <?php
-    include('../../../Model/conexion.php');
+    require_once('../../../Back/Model/conexion.php');
 
     $conexion = new Conexion();
 
@@ -12,7 +12,7 @@
         {
             $data[] = $row;
         }
-        print json_encode($data);
+        return $data;
     } catch (PDOException $e) {
         echo 'error: ' . $e->getMessage();
     }

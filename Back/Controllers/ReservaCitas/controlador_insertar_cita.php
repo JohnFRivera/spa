@@ -1,8 +1,8 @@
 <?php
-include('../../Model/conexion.php');
+    require_once '../../../Back/Model/conexion.php';
 
 
-$conexion = new conexion();
+$conexion = new Conexion();
 $conexion->conectar();
 
 try {

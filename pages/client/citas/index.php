@@ -1,5 +1,8 @@
 <?php
 define("PAGE_NAME", "Agendar cita");
+
+$servicio = require_once '../../../Back/Controllers/servicios/select_servicios.php';
+$productos = require_once '../../../Back/Controllers/productos/select_Productos.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,7 +28,7 @@ define("PAGE_NAME", "Agendar cita");
                 <div class="row mb-2">
                     <div class="col col-md-6">
                         <div class="bg-body rounded-3 p-3 shadow-sm">
-                            <form action="" method="post">
+                            <form action="/spa/Back/Controllers/ReservaCitas/controlador_insertar_cita.php" method="post">
                                 <label for="fecha" class="fs-5 ms-1 text-secondary">Fecha</label>
                                 <input type="date" name="fecha" id="fecha" class="form-control form-control-lg mb-1" required>
                                 <div class="row row-cols-1 row-cols-md-2">
@@ -39,14 +42,24 @@ define("PAGE_NAME", "Agendar cita");
                                     </div>
                                 </div>
                                 <label for="idServicio" class="fs-5 ms-1 text-secondary">Servicio</label>
-                                <select name="id_Servicio" id="idServicio" class="form-select form-select-lg" required>
-                                    <option>Seleccionar...</option>
+                                <select name="id_Servicio" id="" class="form-select form-select-lg mb-3">
+                                        <option value="">servicio...</option>
+                                            <?php foreach ($servicio as $servicios): ?>
+                                                <option value="<?php echo ($servicios['id']); ?>">
+                                                    <?php echo ($servicios['descripcion_Servicio']); ?>
+                                        </option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <label for="idProducto" class="fs-5 ms-1 text-secondary">Producto</label>
-                                <select name="id_Producto" id="idProducto" class="form-select form-select-lg mb-3" required>
-                                    <option>Seleccionar...</option>
+                                <select name="id_Producto" id="" class="form-select form-select-lg mb-3">
+                                        <option value="">Producto...</option>
+                                            <?php foreach ($productos as $producto): ?>
+                                                <option value="<?php echo ($producto['id']); ?>">
+                                                    <?php echo ($producto['descripcion']); ?>
+                                        </option>
+                                    <?php endforeach; ?>
                                 </select>
-                                <button type="button" id="btnReservar" class="btn btn-lg btn-success w-100">
+                                <button type="submit" id="btnReservar" class="btn btn-lg btn-success w-100">
                                     Agendar
                                 </button>
                             </form>

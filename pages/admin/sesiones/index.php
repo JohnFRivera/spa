@@ -2,13 +2,7 @@
 define("PAGE_NAME", "Sesiones");
 define("PILL_SELECT", "Lista");
 
-$users = [
-    ["id" => "1", "descripcion" => "John", "duracion" => "1", "precio" => "3105339788", "terapeuta" => "john@gmail.com"],
-    ["id" => "2", "descripcion" => "Kevin", "duracion" => "4", "precio" => "3105339788", "terapeuta" => "kevin@gmail.com"],
-    ["id" => "3", "descripcion" => "Walter", "duracion" => "2", "precio" => "3105339788", "terapeuta" => "walter@gmail.com"],
-    ["id" => "4", "descripcion" => "Camilo", "duracion" => "7", "precio" => "3105339788", "terapeuta" => "camilo@gmail.com"],
-    ["id" => "5", "descripcion" => "Bladimir", "duracion" => "11", "precio" => "3105339788", "terapeuta" => "blacho@gmail.com"],
-];
+$users = require_once '../../../Back/Controllers/sesiones/select_Sesiones.php'
 ?>
 <!DOCTYPE html>
 <html lang="es">

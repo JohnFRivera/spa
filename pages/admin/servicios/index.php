@@ -2,13 +2,8 @@
 define("PAGE_NAME", "Servicios");
 define("PILL_SELECT", "Lista");
 
-$users = [
-    ["id" => "1", "descripcion" => "John", "duracion" => "1", "precio" => "3105339788", "terapeuta" => "john@gmail.com"],
-    ["id" => "2", "descripcion" => "Kevin", "duracion" => "4", "precio" => "3105339788", "terapeuta" => "kevin@gmail.com"],
-    ["id" => "3", "descripcion" => "Walter", "duracion" => "2", "precio" => "3105339788", "terapeuta" => "walter@gmail.com"],
-    ["id" => "4", "descripcion" => "Camilo", "duracion" => "7", "precio" => "3105339788", "terapeuta" => "camilo@gmail.com"],
-    ["id" => "5", "descripcion" => "Bladimir", "duracion" => "11", "precio" => "3105339788", "terapeuta" => "blacho@gmail.com"],
-];
+$users = require_once '../../../Back/Controllers/servicios/select_servicios.php';
+$terapeutas = require_once '../../../Back/Controllers/spaEmpelados/terapeutas/controlador_select_terapeuta.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,10 +53,10 @@ $users = [
                                         foreach ($users as $key => $user) {
                                         ?>
                                             <tr id="row-<?php echo $user["id"] ?>">
-                                                <td><?php echo $user["descripcion"] ?></td>
-                                                <td><?php echo $user["terapeuta"] ?></td>
+                                                <td><?php echo $user["descripcion_Servicio"] ?></td>
+                                                <td><?php echo $user["nombre"] ?></td>
                                                 <td><?php echo $user["duracion"] ?></td>
-                                                <td><?php echo $user["precio"] ?></td>
+                                                <td><?php echo $user["valor_Servicio"] ?></td>
                                                 <td>
                                                     <div class="d-flex justify-content-end gap-2">
                                                         <button type="button" onclick="showPutModal(<?php echo $user['id'] ?>)" class="bg-transparent border-0 text-primary p-0">
@@ -77,7 +72,7 @@ $users = [
                                 </table>
                                 <div class="modal fade" id="putModal" tabindex="-1" aria-labelledby="putModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form id="frmPut" action="/spa/back/" method="post" class="modal-content">
+                                        <form id="frmPut" action="/spa/back/Controllers/servicios/edit_Servicio.php" method="post" class="modal-content">
                                             <div class="modal-header">
                                                 <h1 class="modal-title text-primary fs-4" id="putModalLabel">Modificar Servicio</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -96,8 +91,13 @@ $users = [
                                                     </div>
                                                     <input type="text" name="precio" id="inpPrecio" class="form-control form-control-lg" placeholder="Precio" pattern="^[0-9]*$" min="0" required>
                                                 </div>
-                                                <select name="terapeuta" id="slcTerapeuta" class="form-select form-select-lg">
-                                                    <option>Terapeuta...</option>
+                                                <select name="terapeuta" id="slcTerapeuta" class="form-select form-select-lg mb-3">
+                                                    <option value="">Terapeuta...</option>
+                                                    <?php foreach ($terapeutas as $terapeuta): ?>
+                                                        <option value="<?php echo ($terapeuta['id']); ?>">
+                                                            <?php echo ($terapeuta['nombre']); ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
                                                 </select>
                                             </div>
                                             <div class="modal-footer">
