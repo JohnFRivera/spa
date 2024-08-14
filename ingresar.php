@@ -34,7 +34,7 @@ define("PAGE_NAME", "Ingresar");
                             Bienvenido
                         </h1>
                         <p class="fw-normal text-center fs-5 mb-5"><strong>Inicia sesión</strong> y disfruta de todas las experiencias que nuestro <strong class="text-success">Spa</strong> tiene para ofrecerte</p>
-                        <form action="/spa/Back/Controllers/auth/login/controlador_login.php" method="post">
+                        <form action="/spa/Back/Controllers/auth/login/controlador_login.php" method="post" >
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong><i class="bi bi-exclamation-circle-fill me-1"></i> Error:</strong> La contraseña está incorrecta.
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

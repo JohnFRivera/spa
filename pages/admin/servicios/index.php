@@ -2,6 +2,12 @@
 define("PAGE_NAME", "Servicios");
 define("PILL_SELECT", "Lista");
 
+session_start();
+if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
+    header('Location: ../../../index.php');
+    exit();
+}
+
 $users = require_once '../../../Back/Controllers/servicios/select_servicios.php';
 $terapeutas = require_once '../../../Back/Controllers/spaEmpelados/terapeutas/controlador_select_terapeuta.php';
 ?>

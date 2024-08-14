@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $telefono = $_POST['telefono'];
     $email = $_POST['correo'];
     $password = $_POST['password'];
+
     
 
     $errors = [];

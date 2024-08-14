@@ -2,6 +2,12 @@
 define("PAGE_NAME", "Reportes");
 define("PILL_SELECT", "Lista");
 
+session_start();
+if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
+    header('Location: ../../../index.php');
+    exit();
+}
+
 $users = [];
 ?>
 <!DOCTYPE html>

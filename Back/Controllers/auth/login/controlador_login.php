@@ -8,14 +8,13 @@ require_once '../../../Model/conexion.php';
 $conexion = new Conexion();
 $conexion->conectar();
 
-
 session_start();
 
 // Manejo del formulario de inicio de sesión
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recoge y valida datos del formulario
     $email = $_POST['correo'];
-    $password = $_POST['password'];
+    $password = $_POST['password'];  // Cambiado de $_GET a $_POST
 
     $errors = [];
 
@@ -23,9 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conexion->prepare('SELECT id, password FROM usuarios WHERE correo = ?');
     $stmt->execute([$email]);
     $user = $stmt->fetch();
-    echo $user['password'];
-
-    if ($user && password_verify($password, $user['password'])) {
+    
+    if ($user && $password === $user['password']) {
         // Credenciales correctas
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['logged_in'] = true;
@@ -34,5 +32,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $errors[] = 'Correo electrónico o contraseña incorrectos.';
     }
+    
 }
-?>
