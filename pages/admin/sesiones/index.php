@@ -2,11 +2,8 @@
 define("PAGE_NAME", "Sesiones");
 define("PILL_SELECT", "Lista");
 
-session_start();
-if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
-    header('Location: ../../../index.php');
-    exit();
-}
+require_once '../../../Back/Controllers/auth/login/routes/verificar_acceso.php';
+verificar_acceso([ROL_ADMIN]);
 
 $users = require_once '../../../Back/Controllers/sesiones/select_Sesiones.php'
 ?>

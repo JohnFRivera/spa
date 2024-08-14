@@ -1,22 +1,19 @@
 <?php
-    require_once '../../../Back/Model/conexion.php';
-
+session_start();
+require_once '../../../Back/Model/conexion.php';
 
 $conexion = new Conexion();
 $conexion->conectar();
 
 try {
-/*5)	Reporte de ocupación de terapeutas: 
-• Muestra la ocupación de cada terapeuta durante un período de tiempo, 
-destacando los horarios ocupados y disponibles. 
-*/
-    // obtenemos datos del post 
+    // Obtención de datos del POST
     $fecha = $_POST['fecha'];
     $horaInicio = $_POST['hora_Inicio'];
     $hora_fin = $_POST['hora_Fin'];
-    $id_cliente = $_POST['id_Cliente'];
+    $id_cliente = $_SESSION['user_id'];
     $id_Servicio = $_POST['id_Servicio'];
     $id_Producto = $_POST['id_Producto'];
+
     // Consulta para verificar si la hora está ocupada
     $consultaVerificacion = "SELECT COUNT(*) FROM citas WHERE fecha = :fecha AND ((:horaInicio < hora_Fin AND :horaFin > hora_Inicio))";
     $stmtVerificacion = $conexion->prepare($consultaVerificacion);
@@ -35,34 +32,40 @@ destacando los horarios ocupados y disponibles.
         echo json_encode($data);
     } else {
         // Insertar nueva cita
-        $consultaInsertar = "INSERT INTO citas (fecha, hora_Inicio, hora_Fin, id_Cliente, id_Servicio, id_Producto) VALUES (:fecha, :horaInicio, :horaFin, :id_cliente, :id_Servicio, :id_Producto)";
+        $consultaInsertar = "INSERT INTO citas (fecha, hora_Inicio, hora_Fin, id_Usuario, id_Servicio, id_Producto) VALUES (:fecha, :horaInicio, :horaFin, :id_Usuario, :id_Servicio, :id_Producto)";
         $stmtInsertar = $conexion->prepare($consultaInsertar);
-        $stmtInsertar->bindParam(':fecha', $fecha);
-        $stmtInsertar->bindParam(':horaInicio', $horaInicio);
-        $stmtInsertar->bindParam(':horaFin', $hora_fin);
-        $stmtInsertar->bindParam(':id_cliente', $id_cliente);
+        $stmtInsertar->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+        $stmtInsertar->bindParam(':horaInicio', $horaInicio, PDO::PARAM_STR);
+        $stmtInsertar->bindParam(':horaFin', $hora_fin, PDO::PARAM_STR);
+        $stmtInsertar->bindParam(':id_Usuario', $id_cliente);
         $stmtInsertar->bindParam(':id_Servicio', $id_Servicio);
         $stmtInsertar->bindParam(':id_Producto', $id_Producto);
         $stmtInsertar->execute();
-        // ? Actualizo el stock del producto
 
-        $consulta_Cantidad_Consumo_Producto = "SELECT productos.stock as stock, COUNT(id_Producto) as consumidos FROM citas inner join productos on id_Producto = productos.id WHERE id_Producto = '".$id_Producto."' ";
-        $stmt = $conexion->ConsultaCompleja($consulta_Cantidad_Consumo_Producto);
-        $stock = $stmt[0]['stock'];
-        $cantidad = $stmt[0]['consumidos'];
+        // Actualizar stock del producto
+        $consulta_Cantidad_Consumo_Producto = "SELECT productos.stock as stock, COUNT(citas.id_Producto) as consumidos FROM citas INNER JOIN productos ON citas.id_Producto = productos.id WHERE citas.id_Producto = :id_Producto";
+        $stmt = $conexion->prepare($consulta_Cantidad_Consumo_Producto);
+        $stmt->bindParam(':id_Producto', $id_Producto);
+        $stmt->execute();
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stock = $resultado['stock'];
+        $cantidad = $resultado['consumidos'];
         $nuevo_Stock = $stock - $cantidad;
 
-        // ? Actulizo el Stock
-        $actuliazar_Stock = "UPDATE productos SET stock = '".$nuevo_Stock."' WHERE id = '".$id_Producto."' ";
-        $stmt_Actualizar = $conexion -> ConsultaCompleja($actuliazar_Stock);
-            // Enviar la respuesta como JSON
-            $data = array(
-                'access' => true,
-                'message' => 'Cita reservada exitoasamente'
-            );
-    echo json_encode($data);
-    }
+        $actuliazar_Stock = "UPDATE productos SET stock = :nuevo_Stock WHERE id = :id_Producto";
+        $stmt_Actualizar = $conexion->prepare($actuliazar_Stock);
+        $stmt_Actualizar->bindParam(':nuevo_Stock', $nuevo_Stock);
+        $stmt_Actualizar->bindParam(':id_Producto', $id_Producto);
+        $stmt_Actualizar->execute();
 
+        // Respuesta JSON
+        header('Location: http://localhost/spa/pages/client/citas/');
+    }
 } catch (PDOException $e) {
-    echo $e->getMessage();
+    // Manejo de errores
+    echo json_encode(array(
+        'access' => false,
+        'message' => 'Error en la base de datos: ' . $e->getMessage()
+    ));
 }
+?>

@@ -46,6 +46,12 @@ define("PAGE_NAME", "Registrarse");
                                 </div>
                                 <input type="tel" name="telefono" id="telefono" class="form-control form-control-lg" placeholder="Teléfono" pattern="^[0-9]*$" required>
                             </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-text">
+                                <i class="bi bi-geo-alt"></i>
+                                </div>
+                                <input type="text" name="direccion" id="direccion" class="form-control form-control-lg" placeholder="Dirección" required>
+                            </div>
                             <h5 class="fw-bold ms-1 mb-1">Datos de ingreso</h5>
                             <div class="input-group mb-2">
                                 <div class="input-group-text fs-5">

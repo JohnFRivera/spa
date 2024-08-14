@@ -9,12 +9,12 @@ if (isset($_POST['id'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], 
     $correo = $_POST['correo'];
     $id_Rol = $_POST['id_Rol'];
     $telefono = $_POST['telefono'];
-
+    $direccion = $_POST['direccion'];
     $conexion = new Conexion();
     $conexion->conectar();
 
     try {
-        $consulta = "UPDATE usuarios SET nombre = :nombre, apellido = :apellido, telefono = :telefono, correo = :correo, id_Rol = :id_Rol WHERE id = :id";
+        $consulta = "UPDATE usuarios SET nombre = :nombre, apellido = :apellido, telefono = :telefono, correo = :correo, id_Rol = :id_Rol, direccion = :direccion WHERE id = :id";
         $stmt = $conexion->prepare($consulta);
         $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
         $stmt->bindParam(':apellido', $apellido, PDO::PARAM_STR);
@@ -22,6 +22,7 @@ if (isset($_POST['id'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], 
         $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
         $stmt->bindParam(':id_Rol', $id_Rol, PDO::PARAM_INT);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':direccion', $direccion, PDO::PARAM_STR);
         
         $resultado = $stmt->execute();
 

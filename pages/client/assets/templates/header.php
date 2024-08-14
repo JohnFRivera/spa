@@ -1,5 +1,5 @@
 <?php
-
+$username = require_once $_SERVER['DOCUMENT_ROOT'] . '/spa/Back/Controllers/spaEmpelados/usuarios/controlador_username.php';
 $links = [
     ["text" => "Agenda", "href" => "../dashboard.php"]
 ]
@@ -36,9 +36,9 @@ $links = [
                     <div class="btn-group shadow-sm w-100 mb-3 mb-md-0">
                         <div class="btn btn-lg btn-outline-success fw-semibold">
                             <i class="bi bi-person-fill me-2"></i>
-                            John Rivera
+                            <?php echo $username ?>
                         </div>
-                        <a href="/spa/" class="btn btn-lg btn-danger">
+                        <a href="/spa/Back/Controllers/auth/login/logout.php" class="btn btn-lg btn-danger">
                             <i class="bi bi-box-arrow-left"></i>
                         </a>
                     </div>

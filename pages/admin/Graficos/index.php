@@ -1,11 +1,8 @@
 <?php
 define("PAGE_NAME", "Gráficos");
 
-session_start();
-if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
-    header('Location: ../../../index.php');
-    exit();
-}
+require_once '../../../Back/Controllers/auth/login/routes/verificar_acceso.php';
+verificar_acceso([ROL_ADMIN]);
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -2,12 +2,8 @@
 define("PAGE_NAME", "Usuarios");
 define("PILL_SELECT", "Lista");
 
-session_start();
-if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
-    header('Location: ../../../index.php');
-    exit();
-}
-
+require_once '../../../Back/Controllers/auth/login/routes/verificar_acceso.php';
+verificar_acceso([ROL_ADMIN]);
 $users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlador_select_usuario.php';
 ?>
 <!DOCTYPE html>
@@ -54,6 +50,10 @@ $users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlad
                                                 <i class="bi bi-tag-fill me-2"></i>
                                                 Rol
                                             </th>
+                                            <th>
+                                            <i class="bi bi-geo-alt"></i>
+                                                Direccion
+                                            </th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -67,6 +67,7 @@ $users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlad
                                                 <td class="text-start"><?php echo $user["telefono"] ?></td>
                                                 <td><?php echo $user["correo"] ?></td>
                                                 <td class="text-success fw-bold"><?php echo $user["descripcion"] ?></td>
+                                                <td ><?php echo $user["direccion"] ?></td>
                                                 <td>
                                                     <div class="d-flex justify-content-end gap-2">
                                                         <button type="button" onclick="showPutModal(<?php echo $user['id'] ?>)" class="bg-transparent border-0 text-primary p-0">
@@ -120,12 +121,18 @@ $users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlad
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="input-group">
+                                            <div class="input-group mb-2">
                                                 <div class="input-group-text">
                                                     <i class="bi bi-envelope-at fs-5"></i>
                                                 </div>
                                                 <input type="email" name="correo" id="inpEmail" class="form-control form-control-lg" placeholder="Correo electrónico" required>
                                             </div>
+                                            <div class="input-group">
+                                            <div class="input-group-text">
+                                            <i class="bi bi-geo-alt"></i>
+                                            </div>
+                                            <input type="text" name="direccion" id="direccion" class="form-control form-control-lg" placeholder="Dirección" required>
+                                        </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -204,6 +211,7 @@ $users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlad
             document.getElementById("inpApellidos").value = cols[1];
             document.getElementById("inpTelefono").value = cols[2];
             document.getElementById("inpEmail").value = cols[3];
+            document.getElementById("direccion").value = cols[5];
             selectOpt("slcRol", cols[4]);
             putModal.show();
         };

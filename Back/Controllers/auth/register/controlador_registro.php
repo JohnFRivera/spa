@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $telefono = $_POST['telefono'];
     $email = $_POST['correo'];
     $password = $_POST['password'];
-
+    $direccion = $_POST['direccion'];
     
 
     $errors = [];
@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // Insertar nuevo usuario
             
-            $stmt = $conexion->prepare('INSERT INTO usuarios (nombre, apellido, telefono, correo, password) VALUES (?, ?, ?, ?, ?)');
-            if ($stmt->execute([$nombres, $apellidos, $telefono, $email, $password])) {
+            $stmt = $conexion->prepare('INSERT INTO usuarios (nombre, apellido, telefono, correo, password, direccion) VALUES (?, ?, ?, ?, ?, ?)');
+            if ($stmt->execute([$nombres, $apellidos, $telefono, $email, $password, $direccion])) {
                 // Redirigir al inicio de sesión o mostrar mensaje de éxito
                 header('Location: http://localhost/spa/ingresar.php');
                 exit();

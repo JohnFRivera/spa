@@ -63,6 +63,12 @@ define("PILL_SELECT", "Nuevo");
                                         <input type="email" name="correo" class="form-control form-control-lg" placeholder="Correo electrónico" required>
                                     </div>
                                     <div class="input-group mb-2">
+                                <div class="input-group-text">
+                                <i class="bi bi-geo-alt"></i>
+                                </div>
+                                <input type="text" name="direccion" id="direccion" class="form-control form-control-lg" placeholder="Dirección" required>
+                            </div>
+                                    <div class="input-group mb-2">
                                         <div class="input-group-text">
                                             <i class="bi bi-key fs-5"></i>
                                         </div>

@@ -2,11 +2,8 @@
 define("PAGE_NAME", "Servicios");
 define("PILL_SELECT", "Lista");
 
-session_start();
-if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
-    header('Location: ../../../index.php');
-    exit();
-}
+require_once '../../../Back/Controllers/auth/login/routes/verificar_acceso.php';
+verificar_acceso([ROL_ADMIN]);
 
 $users = require_once '../../../Back/Controllers/servicios/select_servicios.php';
 $terapeutas = require_once '../../../Back/Controllers/spaEmpelados/terapeutas/controlador_select_terapeuta.php';
@@ -159,7 +156,7 @@ $terapeutas = require_once '../../../Back/Controllers/spaEmpelados/terapeutas/co
         };
         const showPutModal = (id) => {
             var cols = getCols(id);
-            document.getElementById("frmPut").action += id;
+            document.getElementById("frmPut").action += `?id=${id}`;
             document.getElementById("inpDescripcion").value = cols[0];
             document.getElementById("inpDuracion").value = cols[2];
             document.getElementById("inpPrecio").value = cols[3];

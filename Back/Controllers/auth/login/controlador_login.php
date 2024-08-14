@@ -14,23 +14,47 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recoge y valida datos del formulario
     $email = $_POST['correo'];
-    $password = $_POST['password'];  // Cambiado de $_GET a $_POST
+    $password = $_POST['password'];
+    
 
     $errors = [];
 
     // Verificar credenciales
-    $stmt = $conexion->prepare('SELECT id, password FROM usuarios WHERE correo = ?');
+    $stmt = $conexion->prepare('SELECT usuarios.id, usuarios.password, roles.descripcion 
+    FROM usuarios 
+    INNER JOIN roles ON usuarios.id_Rol = roles.id 
+    WHERE usuarios.correo = ?');
     $stmt->execute([$email]);
     $user = $stmt->fetch();
-    
     if ($user && $password === $user['password']) {
-        // Credenciales correctas
+        //validacion de usuario o admin
+        switch ($user['descripcion']) {
+            case 'usuario':
+                // Credenciales correctas
+            
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['logged_in'] = true;
-        header('Location: http://localhost/spa/pages/admin/usuarios');
+        header('Location: http://localhost/spa/pages/client/citas/');
         exit();
+                break;
+            case 'administrador':    
+            $_SESSION['user_descripcion'] = $user['descripcion'];         
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['logged_in'] = true;
+            
+            header('Location: http://localhost/spa/pages/admin/usuarios/');
+            exit();
+                break;
+            case 'empleado':
+            $_SESSION['user_descripcion'] = $user['descripcion']; 
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['logged_in'] = true;
+            header('Location: http://localhost/spa/pages/admin/usuarios/');
+            exit();
+                break;
+        }
     } else {
-        $errors[] = 'Correo electrónico o contraseña incorrectos.';
+      echo  $errors[] = 'Correo electrónico o contraseña incorrectos.';
     }
     
 }

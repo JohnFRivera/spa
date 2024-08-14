@@ -4,7 +4,7 @@
     $descripcion = $_POST['descripcion'];
     $valor = $_POST['precio'];
     $duracion = $_POST['duracion'];
-    $id = $_POST['terapeuta'];
+    $id = $_GET['terapeuta'];
     $conexion  = new Conexion();
 
     $conexion -> conectar();
