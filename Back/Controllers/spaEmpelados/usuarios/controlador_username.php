@@ -20,8 +20,9 @@ if (isset($_SESSION['user_id'])) {
 
     if ($user) {
         $nombre = $user['nombre'];
-       return  $nombre; 
+      return $nombre; 
     } else {
+        echo $user_id;
         echo "Usuario no encontrado.";
     }
 } else {

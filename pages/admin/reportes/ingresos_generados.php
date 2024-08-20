@@ -5,7 +5,10 @@ define("PILL_SELECT", "Lista");
 require_once '../../../Back/Controllers/auth/login/routes/verificar_acceso.php';
 verificar_acceso([ROL_ADMIN]);
 
-$users = [];
+$users = require_once '../../../Back/Controllers/reportes/controlador_reportes_ingresos.php';
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,19 +61,12 @@ $users = [];
                                 <table id="myTable" class="table table-light table-hover w-100 fs-5 mb-0">
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
-                                            <th>Apellidos</th>
-                                            <th class="text-start">
-                                                <i class="bi bi-telephone-fill me-2"></i>
-                                                Teléfono
-                                            </th>
+                                            <th>Dia</th>
+                                            <th>Mes</th>
+                                            <th>Año</th>
                                             <th>
-                                                <i class="bi bi-envelope-at-fill me-2"></i>
-                                                Correo
-                                            </th>
-                                            <th>
-                                                <i class="bi bi-tag-fill me-2"></i>
-                                                Rol
+                                            <i class="bi bi-coin"></i>
+                                                ingreso
                                             </th>
                                         </tr>
                                     </thead>
@@ -79,11 +75,11 @@ $users = [];
                                         foreach ($users as $key => $user) {
                                         ?>
                                             <tr id="row-<?php echo $user["id"] ?>">
-                                                <td><?php echo $user["nombre"] ?></td>
-                                                <td><?php echo $user["apellido"] ?></td>
-                                                <td class="text-start"><?php echo $user["telefono"] ?></td>
-                                                <td><?php echo $user["correo"] ?></td>
-                                                <td class="text-success fw-bold"><?php echo $user["rol"] ?></td>
+                                                <td><?php echo $user["Dia"] ?></td>
+                                                <td><?php echo $user["Mes"] ?></td>
+                                                <td><?php echo $user["Year"] ?></td>
+                                                <td><?php echo $user["ingreso"] ?></td>
+                                                
                                             </tr>
                                         <?php
                                         }

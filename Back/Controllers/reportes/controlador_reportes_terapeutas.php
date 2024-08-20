@@ -1,5 +1,5 @@
 <?php
-include('../../Model/conexion.php');
+require_once(__DIR__ . '/../../Model/conexion.php');
 
 $conexion = new Conexion();
 
@@ -67,7 +67,7 @@ ORDER BY
     d.TerapeutaID, d.Fecha;
 ";
     $clientes = $conexion->ConsultaCompleja($consulta);
-    echo json_encode($clientes);
+    return $clientes;
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

@@ -5,7 +5,7 @@ define("PILL_SELECT", "Lista");
 require_once '../../../Back/Controllers/auth/login/routes/verificar_acceso.php';
 verificar_acceso([ROL_ADMIN]);
 
-$users = [];
+$users = require_once '../../../Back/Controllers/reportes/controlador_reportes_terapeutas.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,32 +58,38 @@ $users = [];
                                 <table id="myTable" class="table table-light table-hover w-100 fs-5 mb-0">
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
-                                            <th>Apellidos</th>
+                                            <th>ID terapeuta</th>
+                                            <th>Terapeuta</th>
                                             <th class="text-start">
-                                                <i class="bi bi-telephone-fill me-2"></i>
-                                                Teléfono
+                                            <i class="bi bi-calendar-week"></i>
+                                                Fecha
                                             </th>
                                             <th>
-                                                <i class="bi bi-envelope-at-fill me-2"></i>
-                                                Correo
+                                            <i class="bi bi-hourglass-top"></i>
+                                                Inicio laboral
                                             </th>
                                             <th>
-                                                <i class="bi bi-tag-fill me-2"></i>
-                                                Rol
+                                            <i class="bi bi-hourglass-bottom"></i>
+                                                Fin Laboral
                                             </th>
+                                            <th><i class="bi bi-calendar-check-fill"></i>
+                                                Horarios Ocupados</th>
+                                            <th><i class="bi bi-calendar"></i>
+                                                Horarios Disponibles</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         foreach ($users as $key => $user) {
                                         ?>
-                                            <tr id="row-<?php echo $user["id"] ?>">
-                                                <td><?php echo $user["nombre"] ?></td>
-                                                <td><?php echo $user["apellido"] ?></td>
-                                                <td class="text-start"><?php echo $user["telefono"] ?></td>
-                                                <td><?php echo $user["correo"] ?></td>
-                                                <td class="text-success fw-bold"><?php echo $user["rol"] ?></td>
+                                            <tr id="row-<?php echo $user["TerapeutaID"] ?>">
+                                                <td><?php echo $user["TerapeutaID"] ?></td>
+                                                <td><?php echo $user["Terapeuta"] ?></td>
+                                                <td><?php echo $user["Fecha"] ?></td>
+                                                <td><?php echo $user["Inicio_Laboral"] ?></td>
+                                                <td><?php echo $user["Fin_Laboral"] ?>
+                                                <td><?php echo $user["Horarios_Ocupados"] ?>
+                                                <td><?php echo $user["Horarios_Disponibles"] ?>
                                             </tr>
                                         <?php
                                         }

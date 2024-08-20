@@ -5,7 +5,8 @@ define("PILL_SELECT", "Lista");
 require_once '../../../Back/Controllers/auth/login/routes/verificar_acceso.php';
 verificar_acceso([ROL_ADMIN]);
 
-$users = [];
+
+$users = require_once '../../../Back/Controllers/reportes/controlador_reportes_clienteFRC.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">

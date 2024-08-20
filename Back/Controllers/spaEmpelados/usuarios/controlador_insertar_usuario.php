@@ -11,20 +11,20 @@ if (isset($_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['id_Rol
     $telefono = $_POST['telefono'];
     $password = $_POST['password'];
     $direccion = $_POST['direccion'];
-
+    echo $password;
     $conexion = new Conexion();
     $conexion->conectar();
 
     try {
-        $consulta = "INSERT INTO usuarios (nombre, apellido, telefono, correo, id_Rol, password, direccion) VALUES (:nombre, :apellido, :telefono, :correo, :id_Rol, :password, :direccion)";
+        $consulta = "INSERT INTO usuarios (nombre, apellido, telefono, correo, direccion, id_Rol, password ) VALUES (:nombre, :apellido, :telefono, :correo, :direccion, :id_Rol, :password)";
         $stmt = $conexion->prepare($consulta);
         $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
         $stmt->bindParam(':apellido', $apellido, PDO::PARAM_STR);
         $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
         $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
         $stmt->bindParam(':id_Rol', $id_Rol, PDO::PARAM_INT);
-        $stmt->bindParam(':password', $password, PDO::PARAM_INT);
-        $stmt->bindParam(':direccion', $direccion, PDO::PARAM_INT);
+        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        $stmt->bindParam(':direccion', $direccion, PDO::PARAM_STR);
         $resultado = $stmt->execute();
 
         if ($resultado) {

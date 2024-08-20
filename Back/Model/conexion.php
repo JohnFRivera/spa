@@ -2,7 +2,7 @@
 
 class Conexion {
     private $host = "localhost";
-    private $dbname = "bd_spa";
+    private $dbname = "spav2";
     private $usuario = "root";
     private $contrasena = "";
     public $conexion;

@@ -1,7 +1,7 @@
 <?php 
-include('../../../Model/conexion.php');
+require_once(__DIR__ . '../../../../Model/conexion.php');
 
-if (isset($_POST['id'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['id_Rol'], $_POST['telefono'])) {
+if (isset($_GET['id'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['id_Rol'], $_POST['telefono'])) {
 
     $id = $_GET['id'];
     $nombre = $_POST['nombre'];
@@ -27,8 +27,14 @@ if (isset($_POST['id'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], 
         $resultado = $stmt->execute();
 
         if ($resultado) {
-             header('Location: http://localhost/spa/pages/admin/usuarios/');
+            if ($id_Rol === '1') {
+                
+               header('Location: http://localhost/spa/pages/admin/clientes/');
+            }else{
+                
+                header('Location: http://localhost/spa/pages/admin/usuarios/');
             exit();
+            }
         } else {
             $errorInfo = $stmt->errorInfo();
             echo "Error en la consulta: " . $errorInfo[2];
@@ -39,5 +45,6 @@ if (isset($_POST['id'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], 
         $conexion->Desconectar();
     }
 } else {
+    echo $id;
     echo "Faltan datos en la solicitud.";
 }
