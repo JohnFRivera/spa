@@ -1,7 +1,7 @@
 <?php 
 
 include('../../../Model/conexion.php');
-
+session_start();
 // Verificar si los datos están presentes en la solicitud POST
 if (isset($_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['id_Rol'])) {
     $nombre = $_POST['nombre'];
@@ -11,7 +11,6 @@ if (isset($_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['id_Rol
     $telefono = $_POST['telefono'];
     $password = $_POST['password'];
     $direccion = $_POST['direccion'];
-    echo $password;
     $conexion = new Conexion();
     $conexion->conectar();
 
@@ -28,7 +27,16 @@ if (isset($_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['id_Rol
         $resultado = $stmt->execute();
 
         if ($resultado) {
-            header('Location: http://localhost/spa/pages/admin/usuarios/');
+            echo $rol_usuario = $_SESSION['user_descripcion'];
+            
+             if ($rol_usuario === 'administrador') {
+                
+                header('Location: http://localhost/spa/pages/admin/usuarios/');
+                exit(); 
+             }else{
+                 header('Location: http://localhost/spa/pages/admin/clientes/');
+             exit();
+             }  
         } else {
             echo "Error en la consulta";
         }

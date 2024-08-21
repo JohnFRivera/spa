@@ -4,7 +4,7 @@
     $descripcion = $_POST['descripcion'];
     $valor = $_POST['precio'];
     $duracion = $_POST['duracion'];
-    $id = $_GET['terapeuta'];
+    $id = $_POST['terapeuta'];
     $conexion  = new Conexion();
 
     $conexion -> conectar();
@@ -19,6 +19,7 @@
         $stmt -> execute();
         if ($stmt -> rowCount() > 0)
         {
+            
             header('Location: http://localhost/spa/pages/admin/servicios/');
         }
         else

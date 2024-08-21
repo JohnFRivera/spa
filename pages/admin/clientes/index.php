@@ -5,7 +5,7 @@ define("PILL_SELECT", "Lista");
 require_once '../../../Back/Controllers/auth/login/routes/verificar_acceso.php';
 verificar_acceso([ROL_ADMIN]);
 
-$users = require_once '../../../Back/Controllers/clientes/controlador_Select_cliente.php' ;
+$users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlador_Select_usuario.php' ;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -73,9 +73,6 @@ $users = require_once '../../../Back/Controllers/clientes/controlador_Select_cli
                                                     <div class="d-flex justify-content-end gap-2">
                                                         <button type="button" onclick="showPutModal(<?php echo $user['id'] ?>)" class="bg-transparent border-0 text-primary p-0">
                                                             <i class="bi bi-pencil-square"></i>
-                                                        </button>
-                                                        <button type="button" onclick="showDeleteModal(<?php echo $user['id'] ?>)" class="bg-transparent border-0 text-danger p-0">
-                                                            <i class="bi bi-trash-fill"></i>
                                                         </button>
                                                     </div>
                                                 </td>

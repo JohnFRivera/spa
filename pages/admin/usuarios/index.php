@@ -116,7 +116,6 @@ $users = require_once '../../../Back/Controllers/spaEmpelados/usuarios/controlad
                                                     <select name="id_Rol" id="slcRol" class="form-select form-select-lg" required>
                                                         <option value="">Rol...</option>
                                                         <option value="1">Usuario</option>
-                                                        <option value="2">Empleado</option>
                                                         <option value="3">Administrador</option>
                                                     </select>
                                                 </div>

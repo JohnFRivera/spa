@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = [];
 
     // Verificar credenciales
-    $stmt = $conexion->prepare('SELECT usuarios.id, usuarios.password, roles.descripcion 
+    $stmt = $conexion->prepare('SELECT usuarios.id, usuarios.password, roles.descripcion
     FROM usuarios 
     INNER JOIN roles ON usuarios.id_Rol = roles.id 
     WHERE usuarios.correo = ?');
@@ -37,7 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: http://localhost/spa/pages/client/citas/');
         exit();
                 break;
-            case 'administrador':    
+            case 'administrador': 
+                
             $_SESSION['user_descripcion'] = $user['descripcion'];         
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['logged_in'] = true;
