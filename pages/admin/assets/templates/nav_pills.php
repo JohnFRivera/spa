@@ -3,6 +3,14 @@ $pills = [
     ["text" => "Lista", "href" => "./", "icon" => "list"],
     ["text" => "Nuevo", "href" => "./nuevo.php", "icon" => "plus-lg"],
 ];
+
+// Verifica si la página es "Clientes" y elimina la nav "Nuevo" si es así.
+if (PAGE_NAME === "Clientes") {
+    // Filtra las navs para que no incluya la opción "Nuevo".
+    $pills = array_filter($pills, function($pill) {
+        return $pill["text"] !== "Nuevo";
+    });
+}
 ?>
 
 <ul class="nav bg-body-secondary rounded-3 gap-0 p-2 mb-2">

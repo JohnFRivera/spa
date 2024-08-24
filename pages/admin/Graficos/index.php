@@ -30,31 +30,19 @@ verificar_acceso([ROL_ADMIN]);
                     <div class="col">
                         <div class="bg-light rounded-4 p-4 shadow-sm">
                             <h5 class="mb-4">Ingresos Generados por Tiempo</h5>
-                            <div class="d-flex justify-content-center align-items-center" style="height: 155px;" id="ingresosPorTiempo">
-                                <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
+                            <canvas id="ingresosPorTiempoCanvas" style="height: 155px;"></canvas>
                         </div>
                     </div>
                     <div class="col">
                         <div class="bg-light rounded-4 p-4 shadow-sm">
                             <h5 class="mb-4">Popularidad de Tratamientos</h5>
-                            <div class="d-flex justify-content-center align-items-center" style="height: 155px;" id="popularidadTratamientos">
-                                <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
+                            <canvas id="popularidadTratamientosCanvas" style="height: 155px;"></canvas>
                         </div>
                     </div>
                     <div class="col mb-5 mb-md-0">
                         <div class="bg-light rounded-4 p-4 shadow-sm">
                             <h5 class="mb-4">Ingresos Generados por Servicio</h5>
-                            <div class="d-flex justify-content-center align-items-center" style="height: 320px;" id="ingresosPorServicio">
-                                <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
+                            <canvas id="ingresosPorServicioCanvas" style="height: 320px;"></canvas>
                         </div>
                     </div>
                 </div>
@@ -63,6 +51,7 @@ verificar_acceso([ROL_ADMIN]);
     </main>
     <?php include("../../../assets/templates/footer.php"); ?>
     <script src="../../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>

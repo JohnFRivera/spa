@@ -59,32 +59,24 @@ $users = require_once '../../../Back/Controllers/reportes/controlador_reportes_c
                                 <table id="myTable" class="table table-light table-hover w-100 fs-5 mb-0">
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
-                                            <th>Apellidos</th>
+                                            <th>ClienteID</th>
+                                            <th>Cliente</th>
                                             <th class="text-start">
                                                 <i class="bi bi-telephone-fill me-2"></i>
-                                                Teléfono
+                                                Cantidad Visitas
                                             </th>
-                                            <th>
-                                                <i class="bi bi-envelope-at-fill me-2"></i>
-                                                Correo
-                                            </th>
-                                            <th>
-                                                <i class="bi bi-tag-fill me-2"></i>
-                                                Rol
-                                            </th>
+                                            <th>Tratamientos Mas Solicitados</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         foreach ($users as $key => $user) {
                                         ?>
-                                            <tr id="row-<?php echo $user["id"] ?>">
-                                                <td><?php echo $user["nombre"] ?></td>
-                                                <td><?php echo $user["apellido"] ?></td>
-                                                <td class="text-start"><?php echo $user["telefono"] ?></td>
-                                                <td><?php echo $user["correo"] ?></td>
-                                                <td class="text-success fw-bold"><?php echo $user["rol"] ?></td>
+                                            <tr id="row-<?php echo $user["ClienteID"] ?>">
+                                                <td><?php echo $user["Cliente"] ?></td>
+                                                <td><?php echo $user["Cantidad_Visitas"] ?></td>
+                                                <td class="text-start"><?php echo $user["Tratamientos_Mas_Solicitados"] ?></td>
+
                                             </tr>
                                         <?php
                                         }

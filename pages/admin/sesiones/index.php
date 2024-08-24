@@ -37,17 +37,13 @@ $users = require_once '../../../Back/Controllers/sesiones/select_Sesiones.php'
                                 <table id="myTable" class="table table-light table-hover w-100 fs-5 mb-0">
                                     <thead>
                                         <tr>
-                                            <th>Descripción</th>
-                                            <th>Terapeuta</th>
+                                            <th>id</th>
+                                            <th>fecha</th>
                                             <th>
                                                 <i class="bi bi-alarm me-2"></i>
-                                                Duración
+                                                cantidad
                                             </th>
-                                            <th>
-                                                <i class="bi bi-currency-dollar me-2"></i>
-                                                Precio
-                                            </th>
-                                            <th></th>
+                                         
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,17 +51,11 @@ $users = require_once '../../../Back/Controllers/sesiones/select_Sesiones.php'
                                         foreach ($users as $key => $user) {
                                         ?>
                                             <tr id="row-<?php echo $user["id"] ?>">
-                                                <td><?php echo $user["descripcion"] ?></td>
-                                                <td><?php echo $user["terapeuta"] ?></td>
-                                                <td><?php echo $user["duracion"] ?></td>
-                                                <td><?php echo $user["precio"] ?></td>
-                                                <td>
-                                                    <div class="d-flex justify-content-end gap-2">
-                                                        <button type="button" onclick="showPutModal(<?php echo $user['id'] ?>)" class="bg-transparent border-0 text-primary p-0">
-                                                            <i class="bi bi-pencil-square"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
+                                                <td><?php echo $user["id"] ?></td>
+                                                <td><?php echo $user["fecha"] ?></td>
+                                                <td><?php echo $user["cantidad"] ?></td>
+                                                
+                                               
                                             </tr>
                                         <?php
                                         }
