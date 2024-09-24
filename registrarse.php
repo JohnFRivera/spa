@@ -1,4 +1,5 @@
 <?php
+session_start(); // Necesario para acceder a las variables de sesión
 define("PAGE_NAME", "Registrarse");
 ?>
 <!DOCTYPE html>
@@ -24,13 +25,30 @@ define("PAGE_NAME", "Registrarse");
             <div class="col align-content-center">
                 <div class="row">
                     <div class="col-11 col-lg-9 col-xl-8 col-xxl-7 my-5 mx-auto">
-                        <h1 class="fw-bold text-center mb-0">!Descubre el Akzara!</h1>
+                        <h1 class="fw-bold text-center mb-0">¡Descubre el Akzara!</h1>
                         <p class="fw-normal text-center fs-5 mb-5"><strong>Regístrate</strong> ahora y sumérgete en la experiencia rejuvenecedora de nuestro <strong class="text-success">Spa</strong></p>
-                        <form action="/spa/Back/Controllers/auth/register/controlador_registro.php" method="post">
+                        
+                        <!-- Mostrar mensajes de error o éxito -->
+                        <?php if (isset($_SESSION['error'])): ?>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong><i class="bi bi-exclamation-circle-fill me-1"></i> Error:</strong> La contraseña está incorrecta.
+                                <strong><i class="bi bi-exclamation-circle-fill me-1"></i> Error:</strong>
+                                <?php echo $_SESSION['error']; ?>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
+                            <?php unset($_SESSION['error']); // Limpiar mensaje de error ?>
+                        <?php endif; ?>
+
+                        <?php if (isset($_SESSION['success'])): ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong><i class="bi bi-check-circle-fill me-1"></i> Éxito:</strong>
+                                <?php echo $_SESSION['success']; ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            <?php unset($_SESSION['success']); // Limpiar mensaje de éxito ?>
+                        <?php endif; ?>
+
+                        <form action="/spa/Back/Controllers/auth/register/controlador_registro.php" method="post">
+                            <!-- Formulario -->
                             <h5 class="fw-bold ms-1 mb-1">Datos básicos</h5>
                             <div class="row g-2 mb-2">
                                 <div class="col">
@@ -48,7 +66,7 @@ define("PAGE_NAME", "Registrarse");
                             </div>
                             <div class="input-group mb-2">
                                 <div class="input-group-text">
-                                <i class="bi bi-geo-alt"></i>
+                                    <i class="bi bi-geo-alt"></i>
                                 </div>
                                 <input type="text" name="direccion" id="direccion" class="form-control form-control-lg" placeholder="Dirección" required>
                             </div>

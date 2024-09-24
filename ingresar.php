@@ -1,7 +1,6 @@
 <?php
 define("PAGE_NAME", "Ingresar");
-
-
+session_start(); // Iniciar sesión para acceder a los errores
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,12 +32,26 @@ define("PAGE_NAME", "Ingresar");
                         <h1 class="fw-bold text-center mb-0">
                             Bienvenido
                         </h1>
-                        <p class="fw-normal text-center fs-5 mb-5"><strong>Inicia sesión</strong> y disfruta de todas las experiencias que nuestro <strong class="text-success">Spa</strong> tiene para ofrecerte</p>
-                        <form action="/spa/Back/Controllers/auth/login/controlador_login.php" method="post" >
+                        <p class="fw-normal text-center fs-5 mb-5">
+                            <strong>Inicia sesión</strong> y disfruta de todas las experiencias que nuestro 
+                            <strong class="text-success">Spa</strong> tiene para ofrecerte
+                        </p>
+
+                        <!-- Mostrar los errores aquí -->
+                        <?php if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])): ?>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong><i class="bi bi-exclamation-circle-fill me-1"></i> Error:</strong> La contraseña está incorrecta.
+                                <strong><i class="bi bi-exclamation-circle-fill me-1"></i> Error:</strong>
+                                <ul>
+                                    <?php foreach ($_SESSION['errors'] as $error): ?>
+                                        <li><?php echo $error; ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
+                            <?php unset($_SESSION['errors']); // Limpiar errores después de mostrarlos ?>
+                        <?php endif; ?>
+
+                        <form action="/spa/Back/Controllers/auth/login/controlador_login.php" method="post">
                             <div class="input-group mb-2">
                                 <div class="input-group-text">
                                     <i class="bi bi-envelope-at fs-5"></i>
@@ -67,7 +80,9 @@ define("PAGE_NAME", "Ingresar");
                                 Entrar
                             </button>
                             <p class="text-center fs-6 mb-0">
-                                <a href="./registrarse.php" class="link-primary link-underline-opacity-0 link-underline-opacity-100-hover">¿Aún no tienes una cuenta?</a>
+                                <a href="./registrarse.php" class="link-primary link-underline-opacity-0 link-underline-opacity-100-hover">
+                                    ¿Aún no tienes una cuenta?
+                                </a>
                             </p>
                         </form>
                     </div>

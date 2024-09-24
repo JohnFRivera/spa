@@ -5,7 +5,7 @@ $pills = [
 ];
 
 // Verifica si la página es "Clientes" y elimina la nav "Nuevo" si es así.
-if (PAGE_NAME === "Clientes") {
+if (PAGE_NAME === "Clientes" || PAGE_NAME === "Sesiones" ) {
     // Filtra las navs para que no incluya la opción "Nuevo".
     $pills = array_filter($pills, function($pill) {
         return $pill["text"] !== "Nuevo";
