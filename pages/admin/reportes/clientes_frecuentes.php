@@ -61,11 +61,10 @@ $users = require_once '../../../Back/Controllers/reportes/controlador_reportes_c
                                         <tr>
                                             <th>ClienteID</th>
                                             <th>Cliente</th>
-                                            <th class="text-start">
+                                            <th class="text-end">
                                                 <i class="bi bi-telephone-fill me-2"></i>
                                                 Cantidad Visitas
                                             </th>
-                                            <th>Tratamientos Mas Solicitados</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -75,7 +74,7 @@ $users = require_once '../../../Back/Controllers/reportes/controlador_reportes_c
                                             <tr id="row-<?php echo $user["ClienteID"] ?>">
                                                 <td><?php echo $user["Cliente"] ?></td>
                                                 <td><?php echo $user["Cantidad_Visitas"] ?></td>
-                                                <td class="text-start"><?php echo $user["Tratamientos_Mas_Solicitados"] ?></td>
+                                                <td class="text-end"><?php echo $user["Tratamientos_Mas_Solicitados"] ?></td>
 
                                             </tr>
                                         <?php

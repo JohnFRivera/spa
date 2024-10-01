@@ -71,7 +71,7 @@ $users = require_once '../../../Back/Controllers/reportes/controlador_reportes_p
                                             <tr id="row-<?php echo $user["id"] ?>">
                                                 <td><?php echo $user["descripcion"] ?></td>
                                                 <td><?php echo $user["stock"] ?></td>
-                                                <td class="text-start"><?php echo $user["consumo"] ?></td>
+                                                <td class="text-end"><?php echo $user["consumidos"] ?></td>
                                             </tr>
                                         <?php
                                         }

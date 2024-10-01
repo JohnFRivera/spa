@@ -52,6 +52,7 @@ verificar_acceso([ROL_ADMIN]);
     <?php include("../../../assets/templates/footer.php"); ?>
     <script src="../../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./main.js"></script>
 </body>
 
 </html>

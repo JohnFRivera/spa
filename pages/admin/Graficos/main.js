@@ -32,8 +32,8 @@
                 fetch('../../../Back/Controllers/graficos/grafico_Popularidad.php') 
                     .then(response => response.json())
                     .then(data => {
-                        const labels = data.map(entry => entry.tratamiento);
-                        const valores = data.map(entry => entry.popularidad);
+                        const labels = data.map(entry => entry.descripcion);
+                        const valores = data.map(entry => entry.cantidad);
         
                         const ctx = document.getElementById('popularidadTratamientosCanvas').getContext('2d');
                         new Chart(ctx, {
@@ -87,8 +87,8 @@
                     fetch('../../../Back/Controllers/graficos/grafico_IngresosServicios.php') 
                     .then(response => response.json())
                     .then(data => {
-                        const labels = data.map(entry => entry.servicio);
-                        const valores = data.map(entry => entry.total_ingresos);
+                        const labels = data.map(entry => entry.descripcion);
+                        const valores = data.map(entry => entry.valor);
         
                         const ctx = document.getElementById('ingresosPorServicioCanvas').getContext('2d');
                         new Chart(ctx, {
