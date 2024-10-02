@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             } else {
                
-                $errors[] = 'La contraseña es incorrecta.' . $password;
+                $errors[] = 'La contraseña es incorrecta.';
             }
         }
     }
