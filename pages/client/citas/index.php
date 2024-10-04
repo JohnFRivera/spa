@@ -1,8 +1,9 @@
 <?php
 define("PAGE_NAME", "Agendar cita");
-
+$citasPendientes = require_once '../../../Back/Controllers/ReservaCitas/controlador_pendiente_cita.php';
 $servicio = require_once '../../../Back/Controllers/servicios/select_servicios.php';
 $productos = require_once '../../../Back/Controllers/productos/select_Productos.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -43,19 +44,19 @@ $productos = require_once '../../../Back/Controllers/productos/select_Productos.
                                 </div>
                                 <label for="idServicio" class="fs-5 ms-1 text-secondary">Servicio</label>
                                 <select name="id_Servicio" id="" class="form-select form-select-lg mb-3">
-                                        <option value="">servicio...</option>
-                                            <?php foreach ($servicio as $servicios): ?>
-                                                <option value="<?php echo ($servicios['id']); ?>">
-                                                    <?php echo ($servicios['descripcion_Servicio']); ?>
+                                    <option value="">servicio...</option>
+                                    <?php foreach ($servicio as $servicios): ?>
+                                        <option value="<?php echo ($servicios['id']); ?>">
+                                            <?php echo ($servicios['descripcion_Servicio']); ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
                                 <label for="idProducto" class="fs-5 ms-1 text-secondary">Producto</label>
                                 <select name="id_Producto" id="" class="form-select form-select-lg mb-3">
-                                        <option value="">Producto...</option>
-                                            <?php foreach ($productos as $producto): ?>
-                                                <option value="<?php echo ($producto['id']); ?>">
-                                                    <?php echo ($producto['descripcion']); ?>
+                                    <option value="">Producto...</option>
+                                    <?php foreach ($productos as $producto): ?>
+                                        <option value="<?php echo ($producto['id']); ?>">
+                                            <?php echo ($producto['descripcion']); ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
@@ -67,6 +68,24 @@ $productos = require_once '../../../Back/Controllers/productos/select_Productos.
                     </div>
                 </div>
             </section>
+
+            <section class="col-md-4">
+                <h4 class="fw-bold mb-4">Tus Citas Pendientes</h4>
+                <?php if (is_array($citasPendientes) && count($citasPendientes) > 0): ?>
+                    <ul class="list-group">
+                        <?php foreach ($citasPendientes as $cita): ?>
+                            <li class="list-group-item rounded-4 m-1 shadow-sm">
+                                <strong>Fecha:</strong> <?php echo $cita['fecha']; ?> <br>
+                                <strong>Hora:</strong> <?php echo $cita['hora_Inicio']; ?> - <?php echo $cita['hora_Fin']; ?> <br>
+                                <strong>Servicio:</strong> <?php echo $cita['descripcion_Servicio']; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p>No tienes citas pendientes.</p>
+                <?php endif; ?>
+            </section>
+
         </div>
     </main>
     <?php include("../../../assets/templates/footer.php"); ?>
