@@ -1,4 +1,5 @@
 <?php
+
 define("PAGE_NAME", "Agendar cita");
 $citasPendientes = require_once '../../../Back/Controllers/ReservaCitas/controlador_pendiente_cita.php';
 $servicio = require_once '../../../Back/Controllers/servicios/select_servicios.php';
@@ -70,6 +71,18 @@ $productos = require_once '../../../Back/Controllers/productos/select_Productos.
             </section>
 
             <section class="col-md-4">
+                    <?php if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong><i class="bi bi-exclamation-circle-fill me-1"></i> Error:</strong>
+                <ul>
+                    <?php foreach ($_SESSION['errors'] as $error): ?>
+                        <li><?php echo htmlspecialchars($error); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+                <?php unset($_SESSION['errors']); // Limpiar errores después de mostrarlos ?>
+            <?php endif; ?>
                 <h4 class="fw-bold mb-4">Tus Citas Pendientes</h4>
                 <?php if (is_array($citasPendientes) && count($citasPendientes) > 0): ?>
                     <ul class="list-group">

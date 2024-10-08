@@ -68,7 +68,6 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `descripcion`) VALUES
 (1, 'usuario'),
-(2, 'empelado'),
 (3, 'administrador');
 
 -- --------------------------------------------------------
@@ -104,7 +103,7 @@ CREATE TABLE `terapeutas` (
 --
 
 INSERT INTO `terapeutas` (`id`, `nombre`, `apellido`, `especialidad`, `id_Rol`) VALUES
-(1, 'terapeuta', 'prueba', 'bbbb', 1);
+(1, 'jimmy', 'prueba', 'bbbb', 1);
 
 -- --------------------------------------------------------
 
@@ -129,7 +128,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `telefono`, `correo`, `direccion`, `id_Rol`, `password`, `id_Servicio`) VALUES
-(6, 'admin', 'alzate', '31142678950', 'admin@gmail.com', 'cra 11 N 14-15', 3, 'alzate56', NULL),
+(1, 'admin', 'alzate', '31142678950', 'admin@gmail.com', 'cra 11 N 14-15', 3, 'alzate56', NULL),
 (7, 'cliente', 'prueba', '123', 'cliente@gmail.com', 'cliente_direccion', 1, 'alzate56', NULL);
 
 --

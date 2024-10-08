@@ -25,11 +25,9 @@ try {
 
     if ($count > 0) {
         // Hora ocupada
-        $data = array(
-            'access' => false,
-            'message' => 'Cita ocupada lamentablemente'
-        );
-        echo json_encode($data);
+        $_SESSION['errors'][] = 'Cita ocupada, lamentablemente';
+        header('Location: http://localhost/spa/pages/client/citas/'); // Redirige de vuelta al formulario o página de citas
+        exit;
     } else {
         // Insertar nueva cita
         $consultaInsertar = "INSERT INTO citas (fecha, hora_Inicio, hora_Fin, id_Usuario, id_Servicio, id_Producto) VALUES (:fecha, :horaInicio, :horaFin, :id_Usuario, :id_Servicio, :id_Producto)";
@@ -58,14 +56,14 @@ try {
         $stmt_Actualizar->bindParam(':id_Producto', $id_Producto);
         $stmt_Actualizar->execute();
 
-        // Respuesta JSON
+        // Redirigir después de realizar la cita
         header('Location: http://localhost/spa/pages/client/citas/');
+        exit;
     }
 } catch (PDOException $e) {
-    // Manejo de errores
-    echo json_encode(array(
-        'access' => false,
-        'message' => 'Error en la base de datos: ' . $e->getMessage()
-    ));
+    // Capturar el error y almacenarlo en la sesión
+    $_SESSION['errors'][] = 'Error en la base de datos: ' . $e->getMessage();
+    header('Location: http://localhost/spa/pages/client/citas/'); // Redirige de vuelta al formulario o página de citas
+    exit;
 }
 ?>

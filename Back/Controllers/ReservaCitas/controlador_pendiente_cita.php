@@ -20,6 +20,6 @@ if ($citasPendientes) {
         return $citasPendientes;
     }
 } else {
-    echo "No se encontraron citas pendientes.";
+    echo " ";
 }
 ?>

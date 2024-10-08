@@ -1,10 +1,10 @@
 <?php
 
 class Conexion {
-    private $host = "localhost";
-    private $dbname = "spav2";
-    private $usuario = "root";
-    private $contrasena = "";
+    private $host = "bobuhmoq85iouql8kxyi-mysql.services.clever-cloud.com";
+    private $dbname = "bobuhmoq85iouql8kxyi";
+    private $usuario = "ud0o21tuezynujgw";
+    private $contrasena = "rooQ794e1j6wUJVz9ycn";
     public $conexion;
 
     public function conectar() {
